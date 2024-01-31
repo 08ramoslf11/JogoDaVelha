@@ -19,6 +19,10 @@
 <body>
     <div class="container-fluid">
         <div class="row">
+            <h2 id="jogador"> Jogador 1, sua vez [O]</h2>
+        </div>
+
+        <div class="row">
             <div class="col-4 celula">
                 <span onclick="trocaValor(this,0,0)">+</span>
             </div>
@@ -54,32 +58,98 @@
     </div>
     
 </body>
+
 <script>
     var matrizJogo = [
-        [" "," "," "],
-        [" "," "," "],
-        [" "," "," "],
+        ["","",""],
+        ["","",""],
+        ["","",""],
     ];
+    
+    
 
     var numeroJogador = 1;
 
     console.log(matrizJogo);
 
     function trocaValor(span, linha, coluna)
-    {
-        if (numeroJogador == "1") {
-            matrizJogo[linha][coluna] = "O"; 
-            span.innerHTML = "O"; 
-            numeroJogador = 2
-        } else {
-            matrizJogo[linha][coluna] = "X"; 
-            span.innerHTML = "X";
-            numeroJogador = 1 
-        }
-              
+    { 
+        if (matrizJogo[linha][coluna] == "")
+        {
+            if (numeroJogador == "1") 
+            {
+                matrizJogo[linha][coluna] = "O"; 
+                span.innerHTML = "O"; 
+                numeroJogador = 2
+                document.getElementById("jogador").innerHTML = "jogador 2, sua vez [X]"
+            } else {
+                matrizJogo[linha][coluna] = "X"; 
+                span.innerHTML = "X";
+                numeroJogador = 1 
+                document.getElementById("jogador").innerHTML = "jogador 1, sua vez [O]"
+            }
+
+        if  ((matrizJogo[0][0] == matrizJogo[0][1]) && 
+             (matrizJogo[0][0] == matrizJogo[0][2]) &&
+             (matrizJogo[0][0] != ""))
+        {
+            alert('O jogador ' + matrizJogo[0][0] + ' foi o vencedor');
+        } else if
+            ((matrizJogo[1][0] == matrizJogo [1][1]) && 
+            (matrizJogo[1][0] == matrizJogo[1][2]) &&
+            (matrizJogo[1][0] != ""))
+            {
+                alert('O jogador ' + matrizJogo[1][0] + ' foi o vencedor'); 
+            }           
+        else if 
+            ((matrizJogo[2][0] == matrizJogo [2][1]) && 
+            (matrizJogo[2][0] == matrizJogo[2][2]) &&
+            (matrizJogo[2][0] != ""))
+            {
+                alert('O jogador ' + matrizJogo[2][0] + ' foi o vencedor');     
+            }     
+            else if 
+            ((matrizJogo[0][0] == matrizJogo [1][0]) && 
+            (matrizJogo[0][0] == matrizJogo[2][0]) &&
+            (matrizJogo[0][0] != ""))
+            {
+                alert('O jogador ' + matrizJogo[0][0] + ' foi o vencedor');     
+            }   
+            else if 
+            ((matrizJogo[0][1] == matrizJogo [1][1]) && 
+            (matrizJogo[0][1] == matrizJogo[2][1]) &&
+            (matrizJogo[0][1] != ""))
+            {
+                alert('O jogador ' + matrizJogo[0][1] + ' foi o vencedor');     
+            }       
+            else if 
+            ((matrizJogo[0][2] == matrizJogo [1][2]) && 
+            (matrizJogo[0][2] == matrizJogo[2][2]) &&
+            (matrizJogo[0][2] != ""))
+            {
+                alert('O jogador ' + matrizJogo[0][2] + ' foi o vencedor');     
+            }       
+            else if 
+            ((matrizJogo[0][0] == matrizJogo [1][1]) && 
+            (matrizJogo[0][0] == matrizJogo[2][2]) &&
+            (matrizJogo[0][0] != ""))
+            {
+                alert('O jogador ' + matrizJogo[0][0] + ' foi o vencedor');            
+            }
+            else if 
+            ((matrizJogo[0][2] == matrizJogo [1][1]) && 
+            (matrizJogo[0][2] == matrizJogo[2][0]) &&
+            (matrizJogo[0][2] != ""))
+            {
+                alert('O jogador ' + matrizJogo[0][2] + ' foi o vencedor');            
+            }
+        
+        
+        
+
+        }else{alert("Já jogaram ai seu burro")}
 
         console.log(matrizJogo);
-
     }
 
 </script>
